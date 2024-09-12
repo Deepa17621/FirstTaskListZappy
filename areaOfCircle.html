@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Of Cicle</title>
+    <!-- <link rel="stylesheet" href="../css/areaOfCircle.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    }
+    header{
+        border: 1px solid black;
+        height: 15vh;
+        text-align: center;
+        background-color: azure;
+        color: blue;
+    }
+    #container{
+        border:  1px solid black;
+        height: 80vh;
+    }
+    #field{
+        border: 1px solid white;
+        text-align: center;
+        margin: 200px;
+    }
+    header>h1{
+        margin-top: 25px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Area Calculator of Circle Shape</h1>
+    </header>
+    
+    <section id="conainter">
+        <div id="field">
+            <label for="radius">Enter Radius of Circle</label>
+            <input type="number" id="radius">
+            <br>
+            <br>
+            <input type="submit" onclick="calculate()">
+            <br>
+            <h1 id ="result"></h1>
+        </div>
+    </section>
+
+    <!-- <script src="../js/areaOfCircle.js"></script> -->
+
+    <script>
+        let field=document.getElementById("field");
+        function calculate()
+        {
+            let val=document.getElementById("radius");
+            let result=(22/7)*(val.value)*(val.value);
+            let h1=document.getElementById("result");
+            h1.innerHTML=`Area of Circle: ${result}`
+        }
+    </script>
+</body>
+</html>

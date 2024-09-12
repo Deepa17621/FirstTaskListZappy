@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+    <!-- <link rel="stylesheet" href="../css/factorial.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    border: 1px solid rgb(222, 212, 212);
+    height: 10vh;
+    text-align: center;
+    background-color: darkgrey;
+    color: aliceblue;
+
+}
+header>h1{
+    margin-top: 5px;
+}
+#mainPage
+{
+    height: 75vh;
+    display: flex;
+}
+#getInput
+{
+    border-right: 1px solid rgb(15, 14, 14);
+    height: 75vh;
+    text-align: center;
+    width: 50vw;
+}
+#content{
+    margin-top: 150px;
+    color: blue;
+}
+#btn
+{
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color: blueviolet;
+    font-family: serif;
+    height: 40px;
+    width: 150px;
+}
+#displayOutput
+{
+    border-left: 1px solid rgb(13, 13, 13);
+    height: 75vh;
+    text-align: center;
+    width: 50vw;
+}
+footer{
+    border: 1px solid rgb(207, 201, 201);
+    height: 15vh;
+    text-align: center;
+    color: aliceblue;
+    background-color: darkgray;
+}
+footer>h3{
+    margin-top: 19px;
+}
+#displayOutput>p{
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    display: none;
+    margin: auto;
+    margin-top: 29vh;
+    position: relative;
+}
+     </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <h1>Factorial</h1>
+    </header>
+
+    <!--Section-->
+    <section id="mainPage">
+
+        <!--Get input page-->
+        <div id="getInput">
+            <h4>Input Page</h4>
+            <div id="content">
+                <label for="inp">Enter A Number:  </label>
+            <input type="number" id="inp">
+            <br><br>
+            <button id="btn">Click Here To Check</button>
+            </div>
+        </div>
+
+        <!--Display Output Page-->
+        <div id="displayOutput">
+            <h4>Output Page</h4>
+            <p id="result"></p>
+        </div>
+
+    </section>
+
+        
+    <!--Footer-->
+    <footer>
+        <h3><b><i>The product of all of the positive integers from 1 to a given positive integer. It is written as the given integer followed by an exclamation point. For example, the factorial of 4 (written 4!) is 1 × 2 × 3 × 4, or 24.</i></b></h3>
+    </footer>
+    <!-- <script src="../js/factorial.js"></script> -->
+     <script>
+        
+let resultH3=document.getElementById("result");
+
+let btn=document.getElementById("btn");
+
+let val=document.getElementById("inp");
+
+btn.addEventListener("click",()=>
+{
+    let temp=val.value;
+    let output=1;
+    for(let i=val.value;i>=1;i--)
+    {
+        output*=i;
+    }
+    resultH3.textContent=`Factorial of ${val.value} is ${output}`;
+    resultH3.style.display="block";
+});
+     </script>
+</body>
+</html>

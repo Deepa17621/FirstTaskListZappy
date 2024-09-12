@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+    <!-- <link rel="stylesheet" href="../css/fizzbuzz.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+header{
+    border: 1px solid black;
+    height: 10vh;
+}
+header>h3{
+    text-align: center;
+    margin-top: 15px;
+}
+footer
+{
+    border: 1px solid black;
+    height: 20vh;
+    text-align: center;
+    line-height: 20px;
+}
+#container
+{
+    border: 1px solid black;
+    height: 70vh;
+}
+
+     </style>
+</head>
+<body>
+    <header>
+        <h3>Number Game-FizzBuzz</h3>
+    </header>
+    <section id="container">
+    
+    </section>
+    <footer>
+    <h4> FizzBuzz Game </h4>
+    <h5>Here Numbers From 1 To 100 will going to be Print.</h5>
+    <h4>Fizz will be print isntead of number which is divisible by 3
+    </h4>
+    <h4>buzz will be print isntead of number which is divisible by 5
+    </h4>
+    <h4>FizzBuzz will be print isntead of number which is divisible by both 3 and 5.
+    </h4>
+    </footer>
+   <!-- <script src="../js/fizzbuzz.js"></script>  -->
+    <script>
+        let i=1;
+let container=document.getElementById("container");
+let h3=document.createElement("h3");
+
+
+let interval=setInterval(()=>{
+    if(i%3==0 && i%5==0)
+        {
+            h3.textContent+="FizzBuzz , ";
+            h3.style.color="Red";
+            container.appendChild(h3);
+            i++;
+        }
+    
+    else if(i%3==0)
+    {
+        
+        h3.textContent+="Fizz , ";
+        h3.style.color="Green"
+        container.appendChild(h3);
+        i++;
+    }
+    else if(i%5==0)
+    {
+        
+        h3.textContent+="Buzz , ";
+        h3.style.color="yellow"
+        container.appendChild(h3);
+        i++;
+    }
+    else if(i==101)
+    {
+        clearInterval(interval);
+    }
+    else{
+
+        h3.textContent+=`${i} ,`;
+        h3.style.color="Black"
+        container.appendChild(h3);
+        i++;
+    }
+},900);
+    </script>
+</body>
+</html>

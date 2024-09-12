@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            border: 1px solid black;
+            height: 10vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container {
+            height: 69vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* margin-top: 10%; */
+        }
+
+        footer {
+            height: 10vh;
+        }
+
+        button {
+            width: 20%;
+            height: 8%;
+            background-color: rgb(12, 52, 173);
+            border-color: rgb(12, 52, 173);
+            color: azure;
+            border-radius: 2px;
+            font-size: medium;
+        }
+
+        input {
+            width: 40%;
+            height: 10%;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: blue;
+            border-color: blue;
+            color: rgb(250, 252, 254);
+        }
+
+        form {
+            width: 100%;
+            height: 80%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h2>Merge Sort</h2>
+    </header>
+    <div id="container">
+        <h4>Enter number series separated by , comma.
+            Example:12,123,11,2,</h4>
+        <form action="">
+            <input type="text" name="" id="inp" placeholder="Enter number Series To Sort. Ex.100,23,1,34,54" autofocus>
+            <p style="text-align: left; color: red;"></p>
+            <br><br>
+            <button>Click Here To Sort</button>
+        </form>
+        <h3 id="resultText" style="display: none;">Result:</h3>
+    </div>
+    <footer>
+
+    </footer>
+    <script>
+        let inpTag = document.querySelector("#inp");
+        let form = document.querySelector("form");
+        //Event Listener strat
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            //Constraint Violation Check start
+            let output = document.createElement("h3");
+            (document.getElementById("container").appendChild(output));
+            inpTag.nextElementSibling.textContent = !(inpTag.value).length ? "Input Should'nt be Empty" : (alpha(inpTag) ? "Input should be number series(digits) only" : "");
+            inpTag.style.cssText = !(inpTag.value).length ? `border-color:red;` : (alpha(inpTag) ? `border-color:red;` : `border-color:black`);
+
+            if (!(inpTag.value).includes(',') && (inpTag.value).length != 0 && !alpha(inpTag)) {
+                output.style.cssText = `text-align:center;
+                color:red;`;
+                output.textContent = `result:${inpTag.value}.\n
+                Sigle Element can't be sorted.`;
+                (document.getElementById("container").appendChild(output));
+
+            }
+            //constraint violation check End
+
+            //Actual Merge sort starts here..........
+            else 
+            {
+                document.getElementById("resultText").style="block";
+                let intialArr = inpTag.value.split(',');
+                console.log(intialArr);
+                let convertedArray=convertIntArray(intialArr);
+                console.log(convertedArray);
+                
+                console.log("Sorted Array")
+                console.log(divideAnArray(convertedArray));
+                let finalOutput=divideAnArray(convertedArray);
+                
+                finalOutput.forEach(element => 
+                {
+                    output.textContent+=`${element}, `    
+                });
+                // document.write(finalOutput);
+            }
+        });
+        //alphabet Check
+        function alpha(inp) {
+            let letters = /^[A-Za-z]+$/;
+            if ((inp.value).match(letters)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        //Convert Character Array into Integer Array
+        function convertIntArray(arr) 
+        {
+            let newArray=arr.map((e)=>{
+                return Number(e);
+            });
+            return newArray;
+        }
+
+        //Divide Array---Recursive Function
+        function divideAnArray(arr) {
+            let mid = Math.floor((arr.length) / 2);
+            // console.log(mid)
+            let leftArray = actualDivide(arr, 0, mid);
+            // console.log(leftArray + "left array");
+            let rightArray = actualDivide(arr, mid, arr.length);
+            // console.log(rightArray+"rightarray")
+            if(mid == 0)
+            {
+                return arr;
+            }
+            let leftMerge = divideAnArray(leftArray);
+            let rightMerge = divideAnArray(rightArray);
+
+            return mergeSortArray(leftMerge, rightMerge);
+        }
+        // Convert Sub Array From Array
+        function actualDivide(arr, l, r) 
+        {
+            let newArr = new Array();
+            for (let i = l; i < r; i++) 
+            {
+                newArr.push(arr[i]);
+            }
+            return newArr;
+        }
+
+        //Merge Sort Recursion Functions Starts Here..........
+        function mergeSortArray(leftArr, rightArr)
+         {
+            let outputArr = new Array();
+            let i = 0, j = 0;
+            while (i < leftArr.length && j < rightArr.length) 
+            {
+                if (leftArr[i] < rightArr[j]) 
+                {
+                    outputArr.push(leftArr[i++]);
+                }
+                else
+                {
+                    outputArr.push(rightArr[j++]);
+                }
+            }
+            while (i < leftArr.length)
+            {
+                outputArr.push(leftArr[i++]);
+            }
+            while (j < rightArr.length)
+            {
+                outputArr.push(rightArr[j++]);
+            }
+            return outputArr;
+        }
+    </script>
+</body>
+
+</html>

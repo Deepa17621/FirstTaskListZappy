@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator of Rectangle Shape</title>
+    <!-- <link rel="stylesheet" href="../css/calciOfRectangle.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    border: 1px solid cadetblue;
+    height: 10vh;
+    text-align: center;
+    background-color: cadetblue;
+    color: bisque;
+}
+header>h3{
+    margin-top: 15px;
+}
+#container
+{
+    border: 1px solid white;
+    height: 80vh;
+    text-align: center;
+}
+table{
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 20vh;
+    /* text-align: left; */
+    /* border-style: none; */
+    border-spacing: 30px;
+    /* margin: 90px 350px; */
+    color:darkmagenta;
+    
+    
+}
+button{
+    border: 1px solid rgb(206, 218, 209);
+    color: white;
+    padding: 10px;
+    width: 200px;
+    margin-left: 50px;
+    background-color: rgb(25, 206, 83);
+    font-size: medium;
+    border-radius: 5px;
+}
+footer{
+    border: 1px solid cadetblue;
+    height: 10vh;
+    text-align: center;
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Area And Perimeter of Rectangle</h3>
+    </header>
+    <section id="container">
+        
+        <table>
+            <tr>
+                <td colspan="2"><h3>Enter Length and Width Of Rectangle to find Area and Perimeter</h3></td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td>
+                    <label for="len">Length: </label>
+                    <input type="number" id="len">
+                </td>
+                <td>
+                    <label for="wid">Width: </label>
+                    <input type="number" id="wid">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="area">Calculate Area</button>
+                </td>
+                <td>
+                    <button id="peri">Calculate Perimeter</button>
+                </td>
+            </tr>
+        </table>
+        <span id="areaSpan"></span>
+        <br>
+        <br>
+        <span id="periSpan"></span>
+    </section>
+    <footer style="background-color: cadetblue;">
+        <h4><i><b style="color: beige;">Area Formula Of Rectangle:  </b></i><strong style="color: azure;">Length * Width</strong> </h4>
+        <h4><i><b style="color: beige;">Perimeter Formula Of Rectangle:  </b></i><strong style="color: azure;">( Length + Width ) * 2</strong> </h4>
+    </footer>
+    <!-- <script src="../js/calciOfRectangle.js"></script> -->
+
+    <script>
+        let container=document.getElementById("container");
+
+let len=document.getElementById("len");
+let wid=document.getElementById("wid");
+
+let areaBtn=document.getElementById("area");
+let periBtn=document.getElementById("peri");
+
+let areaSpan=document.getElementById("areaSpan");
+let periSpan=document.getElementById("periSpan");
+
+
+areaBtn.addEventListener("click", ()=>
+{
+    if(len.value == "" || wid.value=="")
+    {
+        alert("Please Enter length and width to calculate area")
+    }
+    else{
+        let result=(len.value)*(wid.value);
+    areaSpan.textContent=`Area of Rectangle is ${result} units`;
+    }
+    
+});
+
+periBtn.addEventListener("click", ()=>
+    {
+        if(len.value == "" || wid.value==""){
+            alert("Please Enter length and width to calculate area")
+        }
+        else{
+            let result=(len.value)+(wid.value);
+        periSpan.textContent=`Perimeter of Rectangle is ${result*2} units`;
+        
+        }
+    });
+    </script>
+</body>
+</html>

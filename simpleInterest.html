@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest</title>
+    <!-- <link rel="stylesheet" href="../css/simpleInterest.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    border: 1px solid black;
+    height: 15vh;
+    text-align: center;
+    color: rgb(176, 247, 10);
+    background-color: rgb(244, 9, 193);
+    position: relative;
+}
+header>h1
+{
+    margin-top: 20px;
+}
+section{
+    border: 1px solid black;
+    height: 85vh;
+    text-align: center;
+    /* padding-top: 200px; */
+    display: flex;
+}
+#getInput
+{
+    border:  1px solid black;
+    height: 85vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#displayResult{
+    border: 1px solid black;
+    /* display: none; */
+    /* text-align: center; */
+    height: 85vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+table
+{
+    border: 1px solid white;
+    height: 50%;
+    width: 70%;
+    /* border-spacing: 10px; */
+    text-align: left;
+
+}
+#btn
+{
+    text-align: center;
+}
+     </style>
+</head>
+<body>
+    <header>
+        <h1>Simple Interest</h1>
+    </header>
+
+    <section>
+        <div id="getInput">
+            <table>
+                <tr>
+                    <td class="col1">
+                        <label for="principleAmount">Enter Principle Amount:</label>
+                    </td>
+                    <td>
+                        <input type="number" id="principleAmount">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col1">
+                        <label for="rate">Enter Rate Percentage: </label>
+                    </td>
+                    <td>
+                        <input type="number" id="rate">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col1">
+                        <label for="time">Enter No of Years: </label>
+                    </td>
+                    <td>
+                        <input type="number" id="time">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="btn">
+                        <input type="submit" onclick="calculate()">
+                    </td>
+                </tr>
+            </table>   
+        </div>
+
+        <div id="displayResult">
+            <h1 id="result"></h1>
+        </div>
+    </section>
+  <!-- <script src="../js/simpleInterest.js"></script>   -->
+   <script>
+    let princ=document.getElementById("principleAmount");
+let rate=document.getElementById("rate");
+let yr=document.getElementById("time");
+
+let displayPage=document.getElementById("result");
+function calculate()
+{
+    let result=((princ.value)*(rate.value)*(yr.value))/100;
+    displayPage.innerHTML=`Simple Interest : ${result}`;
+    }
+   </script>
+</body>
+</html>

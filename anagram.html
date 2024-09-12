@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram</title>
+    <!-- <link rel="stylesheet" href="../css/anagram.css"> -->
+     <style>
+        header
+{
+    min-width: 90vw;
+    box-shadow: 0 0 5px;
+    min-height: 10vh;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row ;
+}
+#container
+{
+    min-width: 90vw;
+    box-shadow: 0 0 3px;
+    min-height: 85vh;
+    border-radius: 5px;
+    border-spacing: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+}
+#outline
+{
+    width: 300px;
+    box-shadow: 0 0 3px;
+    height: 200px;
+    border-radius: 5px;
+    /* border-spacing: 5px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#btn
+{
+    width: 100%;
+    height: 30px;
+}
+.inp-class
+{
+    text-align: center;
+}
+#btn:hover{
+    background-color: rgb(29, 163, 29);
+    color: white;
+    box-shadow: 0 0 5px rgb(29, 163, 29);
+    border: 1px;
+    border-radius: 5px;
+}
+     </style>
+</head>
+<body>
+    <header>
+        <h1><i>Here You Can Check Anagram of Two Strings</i></h1>
+    </header>
+    <div id="container">
+
+        <div id="outline">
+            <p id="result" style="color: forestgreen;"></p>
+            <form action="">
+                <input type="text" id="str1" placeholder="Enter String 1" class="inp-clas"><br>
+                <br>
+                <input type="text" id="str2" placeholder="Enter a String 2" class="inp-clas"><br><br>
+                <button type="button" id="btn" class="inp-clas">Submit</button>
+            </form>
+
+        </div>
+    </div>
+    <!-- <script src="../js/anagram.js"></script> -->
+     <script>
+        let str1=document.getElementById("str1");
+let str2=document.getElementById("str2");
+
+let btn=document.getElementById("btn");
+
+btn.addEventListener("click", ()=>
+{
+    //value
+    let val1=str1.value;
+    let val2=str2.value;
+
+    //String to CharacterArray
+    let arr1=(val1.toLowerCase()).split("");
+    let arr2=(val2.toLowerCase()).split("");
+
+    //Sorting of array
+    let sorted1=arr1.sort();
+    let sorted2=arr2.sort();
+
+    //array to String Conversion
+    let res1=sorted1.join("");
+    let res2=sorted2.join("");
+
+    if(res1 === res2)
+    {
+        (document.getElementById("result")).innerHTML="Anagram";
+    }
+    else
+    {
+        (document.getElementById("result")).innerHTML="Not a Anagram";
+    }
+});
+     </script>
+</body>
+</html>

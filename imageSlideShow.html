@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <!-- <link rel="stylesheet" href="../css/imageSlideShow.css"> -->
+     <style>
+        *
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#outerContainer
+{
+    width: 100vw;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(232, 240, 216);
+}
+#imageContainer
+{
+    border: 1px solid black;
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}
+#img-tag
+{
+    width:100% ;
+    height:100%;
+    
+}
+#btnContainer
+{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+button
+{
+    height: 30px;
+    width: 70px;
+    background-color: chartreuse;
+    border-color: chartreuse;
+    color: rgb(104, 9, 9);
+}
+button:hover{
+    background-color:rgb(3, 61, 34);
+    color: white;
+    border-color: rgb(3, 61, 34);
+}
+
+#indexNum{
+    position: absolute;
+    color: white;
+}
+     </style>
+</head>
+<body>
+    <!-- Outer Container -->
+    <div id="outerContainer">
+        <h3 style="text-align: center; margin-bottom: 20px;">Image Slideshow</h3>
+        <!-- Image Container -->
+        <div id="imageContainer">
+
+            <!-- Index Number For Images -->
+            <div id="indexNum">
+                
+            </div>
+            <!-- Image -->
+            <img src="https://cdn.pixabay.com/photo/2020/06/05/21/09/cultural-tourism-5264542_1280.jpg" alt="" id="img-tag">
+        </div>
+        <br>
+        <div id="btnContainer">
+            <Button id="previous">Previous</Button>
+            <Button id="next">Next</Button>
+        </div>
+    </div>
+    <!-- <script src="../js/imageSlider.js"></script> -->
+     <script>
+        const arr = [
+    "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+    "https://fastly.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s",
+    "https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA",
+    "https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU",
+    "https://fastly.picsum.photos/id/25/5000/3333.jpg?hmac=yCz9LeSs-i72Ru0YvvpsoECnCTxZjzGde805gWrAHkM"
+]
+
+let img=document.querySelector("img");
+img.src=arr[0];
+
+const prev=document.getElementById("previous");
+const next=document.getElementById("next");
+let indexNumber=document.getElementById("indexNum");
+let count=0;
+indexNumber.innerHTML=`${count+1}/5`
+next.addEventListener("click", ()=>{
+    count++;
+    if(count==5) count=0;
+    img.src=arr[count];
+    indexNumber.innerHTML=`${count+1}/5`;
+});
+
+previous.addEventListener("click", ()=>{
+    if(count==0) count=5;
+    count--;
+    img.src=arr[count];
+    indexNumber.innerHTML=`${count+1}/5`;
+});
+     </script>
+</body>
+</html>

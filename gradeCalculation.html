@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade-Calculation</title>
+    <!-- <link rel="stylesheet" href="../css/gradeCalculation.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+#container
+{
+    width: 99vw;
+    height: 99vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.children
+{
+    border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-around;
+    align-items: center;
+}
+#realForm
+{
+    border: 1px solid black;
+    height: 40%;
+    width: 50%;
+    padding:20px ;
+    border-radius: 10px;
+    box-shadow: 0 0 15px;
+    /* margin-top: px; */
+}
+table{
+    border: 1px solid black;
+    border-collapse:collapse ;
+    line-height: 23px;
+    width: 70%;
+    height:68%;
+    padding: 5px;
+}
+#resultTable
+{
+    border: 1px solid black;
+    border-collapse:collapse ;
+    /* line-height: 23px; */
+    width: 90%;
+    /* height:; */
+    /* padding: 5px; */
+}
+th, td
+{
+    border: 1px solid black;
+}
+.inpBox
+{
+    width: 60%;
+}
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#result
+{
+    border: 1px solid black;
+    min-width: 80%;
+    min-height: 45%;
+    box-shadow: 0 0 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+    flex-direction: row;
+}
+.inpBox{
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <!--overall Container-->
+    <div id="container">
+
+        <!-- child container --1 -->
+        <div id="formm" class="children">
+            <h3  id="Heading" style="color: rgb(62, 6, 62);">Enter Marks to Calculate the Grade Points</h3>
+
+            <form action="" id="realForm">
+                <input type="number" name="sub1" id="english" placeholder="English" class="inpBox">
+                <br>
+                <p></p><br>
+
+                <input type="number" name="sub2" id="Engg Maths" placeholder="Maths-1" class="inpBox">
+                <br>
+                <p></p><br>
+
+                <input type="number" name="sub3" id="Engg Physics" placeholder="Engg Physics" class="inpBox">
+                <br>
+                <p></p><br>
+
+                <input type="number" name="sub4" id="Engg Chemistry" placeholder="Engg Chemistry"class="inpBox">
+                <br>
+                <p></p><br>
+
+                <input type="number" name="sub5" id="Python" placeholder="Python"  class="inpBox">
+                <br>
+                <p></p><br>
+
+                <button id="btn" class="inpBox">Sumbit</button>
+            </form>
+
+            <!--Result Container-->
+            <div id="result">
+                <table id="resultTable">
+                    <tr>
+                        <th>Sub-Code</th>
+                        <th>Sub-Name</th>
+                        <th>Grade-Alpha</th>
+                        <th>Grade-Num</th>
+                    </tr>
+                    <tr>
+                        <td>Eng-01</td>
+                        <td>English</td>
+                        <td id="engRes"></td>
+                        <td id="engNum"></td>
+                    </tr>
+                    <tr>
+                        <td>MA-02</td>
+                        <td>Maths-1</td>
+                        <td id="matRes"></td>
+                        <td id="matNum"></td>
+                    </tr>
+                    <tr>
+                        <td>Phy-03</td>
+                        <td>Physics</td>
+                        <td id="phyRes"></td>
+                        <td id="phyNum"></td>
+                    </tr>
+                    <tr>
+                        <td>Che-04</td>
+                        <td>Chemistry</td>
+                        <td id="chemRes"></td>
+                        <td id="ChemNum"></td>
+                    </tr>
+                    <tr>
+                        <td>Py-05</td>
+                        <td>Python</td>
+                        <td id="pyRes"></td>
+                        <td id="PyNum"></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- child container --2 -->
+        <section class="children">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="6">Grade Calculation</th>
+                    </tr>
+                    <tr>
+                    <th>90-100</th>
+                    <th>75-89</th>
+                    <th>70-74</th>
+                    <th>61-69</th>
+                    <th>45-59</th>
+                    <th>below 45</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>O</td>
+                    <td>A</td>
+                    <td>B</td>
+                    <td>C</td>
+                    <td>D</td>
+                    <td>Fail or U</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>5</td>
+                </tr>
+                
+            </table>
+        </section>
+    </div>
+    <!-- <script src="../js/gradeCalculation.js"></script> -->
+
+    <script>
+        //Getting Form By Id
+let form=document.getElementById("realForm");
+
+//Getting Input Feilds 
+let engInp=document.getElementById("english");
+let mathInp=document.getElementById("Engg Maths");
+let phyInp=document.getElementById("Engg Physics");
+let chemInp=document.getElementById("Engg Chemistry");
+let pyInp=document.getElementById("Python");
+
+
+form.addEventListener("submit", (event)=> {
+    event.preventDefault();
+
+    let errMsg="required..";
+    let errMsg1="Enter Valid Mark..";
+    let inpFeild=[engInp, mathInp,phyInp,chemInp, pyInp];
+    //english
+    if(engInp.value==""||mathInp.value==""||phyInp.value==""||chemInp.value==""||pyInp.value=="")
+    {
+        for(let i=0; i<inpFeild.length;i++)
+        {
+                if(inpFeild[i].value=="")
+                {
+                     setError(inpFeild[i],errMsg);
+                }
+        }
+    }
+    else
+    {
+        (document.getElementById("result")).style.display="flex";
+        (document.getElementById("engRes")).textContent=calculate01(engInp.value);
+        (document.getElementById("matRes")).textContent=calculate01(mathInp.value);
+        (document.getElementById("phyRes")).textContent=calculate01(phyInp.value);
+        (document.getElementById("chemRes")).textContent=calculate01(chemInp.value);
+        (document.getElementById("pyRes")).textContent=calculate01(pyInp.value);
+
+         //Set Number Grade
+         (document.getElementById("engNum")).textContent=calculate02(engInp.value);
+         (document.getElementById("matNum")).textContent=calculate02(mathInp.value);
+         (document.getElementById("phyNum")).textContent=calculate02(phyInp.value);
+         (document.getElementById("ChemNum")).textContent=calculate02(chemInp.value);
+         (document.getElementById("PyNum")).textContent=calculate02(pyInp.value);
+    };
+
+});
+
+function calculate01(mark)
+{
+    let alpGrade;
+    if(mark>=1 && mark<=45)
+    {
+        alpGrade='U';
+    }
+    else if(mark>=45 && mark<=59)
+    {
+        alpGrade='D';
+    }
+    else if(mark>=60 && mark<=69)
+    {
+        alpGrade='C';
+    }
+    else if(mark>=70 && mark<=74)
+    {
+        alpGrade='B';
+    }
+    else if(mark>=75 && mark<=89)
+    {
+        alpGrade='A';
+    }
+    else if(mark>=90 && mark<=100)
+    {
+        alpGrade='O';
+    }
+    else{
+        return "Invalid Mark"
+    }
+    return alpGrade;
+};
+function calculate02(mark)
+{
+        if(mark<45)
+        {
+            numGrade=5;
+        }
+        else if(mark>=45 && mark<=59)
+        {
+            numGrade=6;
+        }
+        else if(mark>=60 && mark<=69)
+        {
+            numGrade=7;
+        }
+        else if(mark>=70 && mark<=74)
+        {
+            numGrade=8;
+        }
+        else if(mark>=75 && mark<=89)
+        {
+            numGrade=9;
+        }
+        else if(mark>=90 && mark<=100)
+        {
+            numGrade=10;
+        }
+        else
+        {
+            return "Invalid Mark"
+        }
+        return numGrade;
+};
+
+function setError(InputFeild, errMsg)
+{
+    InputFeild.style.borderColor="red";
+    InputFeild.nextSibling.textContent=errMsg;
+
+}
+    </script>
+</body>
+</html>

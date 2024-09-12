@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Or Even</title>
+    <!-- <link rel="stylesheet" href="../css/oddOrEven.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+header{
+    border: 1px solid black;
+    height: 20vh;
+    text-align: center;
+    background-color: burlywood;
+    color: aliceblue;
+}
+#sec
+{
+    border: 1px solid black;
+    height: 80vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+header>h2{
+    margin-top: 40px;
+}
+#child{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 500px;
+    height: 150px;
+    padding-top: 60px;
+    color: brown;
+
+}
+     </style>
+
+</head>
+<body>
+    <header>
+        <h2>Check Whether Given Number Odd Or Even</h2>
+    </header>
+        <section id="sec">
+            <div id="child">
+                <label for="num">Enter Number: </label>
+                <input type="number" id="num">
+                <br>
+                <br>
+                <input type="submit" onclick="get()">
+                <br>
+                <br><br>
+            </div>
+        </section>
+    <!-- <script src="../js/oddOrEven.js"></script> -->
+     <script>
+        var divv = document.getElementById("div");
+let inp = document.getElementById("getInp");
+divv.appendChild(document.createElement("br"));
+divv.appendChild(document.createElement("br"));
+divv.appendChild(document.createElement("br"));
+let result = document.createElement("h3");
+divv.appendChild(result);
+function find() {
+    let val = inp.value;
+
+    if ((val % 4 == 0) && ((val % 100 != 0) || (val % 400 == 0))) 
+    {
+        result.textContent = `Given Year ${val} is Leap Year`;
+
+    }
+    else {
+        result.textContent = `Given Year ${val} is Not a Leap Year`;
+    }
+
+
+}
+     </script>
+</body>
+</html>

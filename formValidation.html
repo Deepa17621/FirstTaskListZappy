@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Validation</title>
+    <!-- <link rel="stylesheet" href="../css/formValidation.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+#container{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#outLine{
+    box-shadow: 0 0 20px;
+    min-width: 30%;
+    min-height: 70%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* padding: 30px; */
+}
+form{
+    
+    height: 90%;
+    width: 80%;
+    text-align: left;
+    padding: 20px;
+    /* line-height: 30px; */
+}
+.input-container
+{
+    margin: 10px;
+    /* line-height: 30px; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#btnDiv
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#btn
+{
+    /* border: 2px solid black; */
+    width: 100%;
+    /* margin: 10px; */
+    /* height:15.33px ; */
+    padding: 5px;
+    background-color: white;
+    color: black;
+    border: 0px;
+    outline: 1px solid black;
+}
+input{
+    height: 20px;
+}
+#btn:hover{
+    background-color: rgb(71, 184, 71);
+    color: white;
+    outline: 1px solid rgb(71,184,71);
+    
+}
+     </style>
+</head>
+<body>
+    <section id="container">
+       
+        <div id="outLine">
+
+            <form action="" >
+                <!--FirstName-->
+                <div class="input-container">
+                    <label for="fName">First Name:</label>
+                    <input type="text" id="fName" name="fName" placeholder="Enter FirstName" autofocus class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--LastName-->
+                <div class="input-container">
+                    <label for="lName">Last Name:</label>
+                    <input type="text" id="lName" name="lName" placeholder="Enter LastName" class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--Mobile Number-->
+                <div class="input-container">
+                    <label for="phNo">Mobile No:</label>
+                    <input type="tel" id="phNo" name="phNo" placeholder="Enter Mobile Number" class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--Email-->
+                <div class="input-container">
+                    <label for="mail">E-Mail:</label>
+                    <input type="email" id="mail" name="mail" placeholder="Enter Email Id" class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--Password-->
+                <div class="input-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--Confirm Password-->
+                <div class="input-container">
+                    <label for="cPassword">Confirm Password:</label>
+                    <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" class="inputClass">
+                    <div class="error"></div>
+                </div>
+
+                <!--Submit-Button-->
+                <div class="input-container" id="btnDiv">
+                    <button type="submit" id="btn">Submit</button>
+                    
+                </div>
+
+            </form>
+        </div>
+    </section>
+    <!-- <script src="../js/formValidation.js"></script> -->
+     <script>
+        let fname = document.getElementById("fName");
+let lname = document.getElementById("lName");
+let mail = document.getElementById("mail");
+let phno = document.getElementById("phNo");
+let password = document.getElementById("password");
+let cPassword = document.getElementById("cPassword");
+
+let parent=fname.parentElement;
+
+let childAccess=parent.querySelector('.error');
+
+// console.log(childAccess);
+
+let submitBtn=document.getElementById("btn");
+let formm=document.querySelector("form");
+
+formm.addEventListener("submit", (eve)=>
+    {
+        eve.preventDefault();
+
+         //prevention of Each Empty Fields 
+        //  let inpClass = document.querySelectorAll(".inputClass");
+
+        //Prevention of Empty Form Submission
+        // if(fname.value=="" && lname.value=="" && mail.value=="" && phno.value=="" && password.value=="" && cPassword.value=="")
+        // {
+        //     let inpClass=document.querySelectorAll(".inputClass");
+        //     let err=document.querySelectorAll(".error");
+        //     err.forEach((ele)=>
+        //     {
+        //         ele.textContent="should not be Empty";
+        //         ele.style.color="red";
+        //         ele.previousElementSibling.style.borderColor="red";
+        //     });
+        // }
+        // else 
+    
+            if(fname.value=="")
+            {
+                setError(fname);
+            }
+            else
+            {
+                fnameFunc(fname);
+            }
+
+            //lastName 
+            if(lname.value=="")
+            {
+                setError(lname);
+            }
+            else
+            {
+                lnameFunc(lname);
+            }
+            //phone Number 
+            if(phno.value=="")
+            {
+                setError(phno);
+            }
+            else
+            {
+                telFunc(phno);
+            }
+
+            //mail
+            if(mail.value=="")
+            {
+                setError(mail);
+            }
+            else
+            {
+                emailFunc(mail);
+            }
+
+            //passoword
+            if(password.value=="")
+            {
+                setError(password);
+            }
+            else 
+            {
+                passwordFunc(password);
+            }
+
+            //Confirm Password
+            if(cPassword.value=="")
+                {
+                    setError(cPassword);
+                }
+            else if(cPassword.value!=password.value)
+            {
+                cPassword.nextElementSibling.textContent="Password Mismatch"
+                cPassword.nextElementSibling.style.color="red";
+                cPassword.style.border.color="red";
+            }
+            else
+            {
+                cPassword.style.borderColor="green";
+                cPassword.nextElementSibling.innerHTML="";
+            }
+
+        
+        
+     }
+);
+
+// console.log(formm);
+function fnameFunc(ele)
+{
+    let eleme=ele.value;
+    for(let i=0;i<eleme.length;i++)
+    {
+        if(eleme.match(/\d/g))
+            {
+                ele.style.borderColor="red";
+                ele.style.color="red";
+                ele.nextElementSibling.textContent="Name Should only contain alphabet-[a-z, A-Z]";
+                ele.nextElementSibling.style.color="red";
+                break;
+            }
+            else{
+                ele.style.borderColor="green";
+                ele.style.color="black";
+                ele.nextElementSibling.innerHTML="";
+            }
+    } 
+}
+
+//Last Name Validation
+function lnameFunc(ele)
+{
+    let eleme=ele.value;
+    for(let i=0;i<eleme.length;i++)
+    {
+        if(eleme.match(/\d/g))
+            {
+                ele.style.borderColor="red";
+                ele.style.color="red";
+                ele.nextElementSibling.textContent="Name Should only contain alphabet-[a-z, A-Z]";
+                ele.nextElementSibling.style.color="red";
+                break;
+            }
+            else{
+                ele.style.borderColor="green";
+                ele.style.color="black";
+                ele.nextElementSibling.innerHTML="";
+            }
+    } 
+}
+
+function setError(inputField)
+{
+    inputField.nextElementSibling.textContent="should not be Empty";
+    inputField.nextElementSibling.style.color = "red";
+    inputField.style.borderColor="red";
+    // console.log(inputField);
+
+}
+//Mobile Number Validation Function
+function telFunc(ele)
+{
+    if(ele.value.length!=10)
+    {
+        ele.style.borderColor="red";
+        ele.style.color="red";
+        ele.nextElementSibling.textContent="Phone Number Should be 10 digits";
+        ele.nextElementSibling.style.color="red";
+    }
+    else if(!(/^[6-9]\d{9}$/).test(ele.value))
+    {
+        ele.style.borderColor="red";
+        ele.style.color="red";
+        ele.nextElementSibling.textContent="Ph always starts with [6-9] ";
+        ele.nextElementSibling.style.color="red";
+    }
+    else
+    {
+        ele.style.borderColor="green";
+        ele.style.color="black";
+        ele.nextElementSibling.innerHTML="";
+    }
+}
+
+function emailFunc(ele)
+{
+    if(ele.value.length=="")
+    {
+        ele.style.borderColor="red";
+        ele.style.color="red";
+        ele.nextElementSibling.textContent="Email Should be valid";
+        ele.nextElementSibling.style.color="red";
+    }
+    else if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(ele.value))
+    {
+        ele.style.borderColor="red";
+        ele.style.color="red";
+        ele.nextElementSibling.textContent="Email Should be valid";
+        ele.nextElementSibling.style.color="red";
+    }
+    else
+    {
+        ele.style.borderColor="green";
+        ele.style.color="black";
+        ele.nextElementSibling.innerHTML="";
+    }
+}
+
+//password Validation 
+function passwordFunc(ele)
+{
+    if(ele.value.length<=7)
+    {
+        ele.style.borderColor="red";
+        ele.style.color="red";
+        ele.nextElementSibling.textContent="password Should contain 8 characters";
+    }
+    else
+    {
+        ele.style.borderColor="green";
+        ele.style.color="black";
+        ele.nextElementSibling.innerHTML="";
+    }
+}
+
+
+     </script>
+</body>
+</html>

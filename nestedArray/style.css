@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#container
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#formContainer
+{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.inputs
+{
+    height: 50px;
+    width:600px;
+    font-size: x-large;
+}
+#outputContainer
+{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

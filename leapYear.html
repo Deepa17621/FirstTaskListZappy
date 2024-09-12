@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year</title>
+    <!-- <link rel="stylesheet" href="../css/leapYear.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+    border: 1px solid rgb(241, 231, 231);
+    height: 15vh;
+    text-align: center;
+    background-color: gainsboro;
+}
+header>h1{
+    margin-top: 30px;
+}
+#mainPage
+{
+    border: 1px solid grey;
+    height: 70vh;
+    text-align: center;
+    background-color: grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+div
+{
+    border: 1px double rgb(250, 240, 255);
+    height: 40%;
+    width: 35%;
+
+    /* margin-top: 120px; */
+    text-align: center;
+    border-radius: 10px;
+    padding-top:30px;
+    color: aliceblue;
+    /* margin-left: 450px; */
+}
+footer
+{
+    border: 1px solid antiquewhite;
+    height: 10vh;
+    text-align: center;
+    background-color: antiquewhite;
+    padding: 13px;
+}
+     </style>
+</head>
+<body>
+    <header>
+        <h1>Check Leap Year Or Not</h1>
+    </header>
+    <section id="mainPage">
+        <div id="div" >
+            <label for="getInp">Enter Year: </label>
+            <input type="number" name="" id="getInp">
+            <br>
+            <br>
+            <input type="submit" onclick="find()" id="sub">
+        </div>
+    </section>
+    <footer>
+        <p><i><b>It takes approximately 365.25 days for Earth to orbit the Sun — a solar year. We usually round the days in a calendar year to 365. To make up for the missing partial day, we add one day to our calendar approximately every four years. That is a leap year.
+        </b>
+        </i></p>
+    </footer>
+    <!-- <script src="../js/leapYear.js"></script> -->
+     <script>
+        var divv = document.getElementById("div");
+let inp = document.getElementById("getInp");
+divv.appendChild(document.createElement("br"));
+divv.appendChild(document.createElement("br"));
+divv.appendChild(document.createElement("br"));
+let result = document.createElement("h3");
+divv.appendChild(result);
+function find() {
+    let val = inp.value;
+
+    if ((val % 4 == 0) && ((val % 100 != 0) || (val % 400 == 0))) 
+    {
+        result.textContent = `Given Year ${val} is Leap Year`;
+
+    }
+    else {
+        result.textContent = `Given Year ${val} is Not a Leap Year`;
+    }
+
+
+}
+     </script>
+</body>
+</html>

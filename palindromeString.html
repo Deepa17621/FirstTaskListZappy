@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+    <!-- <link rel="stylesheet" href="../css/palindromeString.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    border: 1px solid rgb(222, 212, 212);
+    height: 10vh;
+    text-align: center;
+    background-color: darkgrey;
+    color: aliceblue;
+}
+header>h3
+{
+    margin-top: 20px;
+}
+#container
+{
+    height: 75vh;
+    display: flex;
+}
+#getInput
+{
+    border-right: 1px solid rgb(15, 14, 14);
+    height: 75vh;
+    text-align: center;
+    width: 50vw;
+}
+
+#content
+{
+    margin-top: 150px;
+    color: black;
+}
+
+#btn
+{
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgray;
+    font-family: serif;
+    height: 40px;
+    width: 150px;
+}
+#displayOutput
+{
+    border-left: 1px solid rgb(13, 13, 13);
+    height: 75vh;
+    text-align: center;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+footer
+{
+    border: 1px solid rgb(207, 201, 201);
+    height: 15vh;
+    text-align: center;
+    color: aliceblue;
+    background-color: darkgray;
+}
+footer>h3
+{
+    padding:20px ;
+}
+#inp
+{
+    border: 1px solid grey;
+    height: 10%;
+    width: 50%;
+    background-color: grey;
+    color: floralwhite;
+    padding-top: 15px;
+
+}
+     </style>
+</head>
+<body>
+    <header>
+        <h3>String Palindrome</h3>
+    </header>
+
+    <section id="container">
+        <div id="getInput">
+
+            <div id="content">
+                <label for="inpStr">Enter String: </label>
+                <input type="text" id="inpStr">
+                <br><br><br><br>
+                <button id="btn">Click here To Check</button>
+            </div>
+
+        </div>
+
+        <div id="displayOutput">
+            <!-- <h3>Output will be Displayed Here</h3> -->
+            <h4 id="inp"></h4>
+        </div>
+    </section>
+
+    <footer>
+        <h3>
+            <i>A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards, such as madam or racecar, the date "22/02/2022"</i>
+        </h3>
+    </footer>
+    <!-- <script src="../js/palindromeString.js"></script> -->
+     <script>
+        let input=document.getElementById("inpStr");
+
+let btn=document.getElementById("btn");
+btn.addEventListener("click", ()=>{
+    let txt=input.value;
+    console.log(txt);
+    let txt1=txt.toLowerCase();
+    let result=document.getElementById("inp");
+   
+        for(let j=0,k=txt1.length-1;j<k;j++,k--)
+            {
+                if(txt1[j]!=txt1[k])
+                {
+                    result.textContent=`Given String ${txt} is not Palindrome`;
+                    return;
+                }
+            }
+            result.textContent=`Given String ${txt} is Palindrome`;
+});
+     </script>
+</body>
+</html>

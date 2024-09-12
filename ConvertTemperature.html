@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Temperature Units</title>
+    <!-- <link rel="stylesheet" href="../css/ConvertTemperature.css"> -->
+     <style>
+        *
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#container
+{
+    height: 100vh;
+    width: 100vw;
+    /* border: 1px solid black; */
+    box-shadow: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#formm
+{
+    height: 65%;
+    width: 50%;
+    box-shadow: 0 0 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn
+{
+    width: 40%;
+    height: 30px;
+    margin: 10px;
+}
+#inputContainer 
+{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+     </style>
+</head>
+<body>
+    <div id="container">
+        <div id="formm">
+            <button type="button" class="btn" id="celsius">Celsius =>to Kelvin, Fahrenheit</button>
+            <br>
+            <button type="button" class="btn" id="kelvin">Kelvin =>to Celsius, Fahrenheit</button>
+            <br>
+            <button type="Fahrenheit" class="btn" id="fahrenheit">Fahrenheit  =>to Celsius, Kelvin</button>
+            <br>
+            <div id="inputContainer">
+                <input type="number" id="inp" class="btn" placeholder="enter temperature to be Converted">
+                <br>
+                <input type="submit" class=" btn" value="Submit" id="submitBtn" >
+            </div>
+        </div>
+        <br><br>
+    </div>
+    <!-- <script src="../js/ConvertTemperature.js"></script> -->
+     <script>
+        let celBtn=document.getElementById("celsius");
+let kelBtn=document.getElementById("kelvin");
+let fahBtn=document.getElementById("fahrenheit");
+
+let inpContainer=document.getElementById("inputContainer");
+let container=document.getElementById("container");
+
+//Result 
+let fahResult=document.createElement("h3");
+container.append(fahResult);
+//
+let kelResult=document.createElement("h3");
+container.append(kelResult);
+
+//1...Celsius To Other Temperature Calculations
+celBtn.addEventListener("click", ()=>{
+    celBtn.style.backgroundColor="green";
+    celBtn.style.color="white";
+
+    fahBtn.style.backgroundColor="white";
+    fahBtn.style.color="black";
+
+    kelBtn.style.backgroundColor="white";
+    kelBtn.style.color="black";
+    
+    (document.getElementById("submitBtn")).addEventListener("click", ()=>{
+        let inp=Number(document.getElementById("inp").value);
+        //Celsius --------> Fahrenheit
+        let calculateToFah=(9/5)*inp+32;
+        fahResult.textContent=`Fahrenheit=${calculateToFah} F`;
+        
+        //Celsius --------->Kelvin
+        let calculateToKel=inp+273.15;
+        kelResult.textContent=`Kelvin=${calculateToKel} K`;
+    });
+});
+//=============================================================
+
+//2...Kelvin To Other Temperature Calculations
+kelBtn.addEventListener("click", ()=>{
+    kelBtn.style.backgroundColor="green";
+    kelBtn.style.color="white";
+
+    celBtn.style.backgroundColor="white";
+    celBtn.style.color="black";
+
+    fahBtn.style.backgroundColor="white";
+    fahBtn.style.color="black";
+    
+    (document.getElementById("submitBtn")).addEventListener("click", ()=>{
+        let inp=Number(document.getElementById("inp").value);
+        //Kelvin --------> Fahrenheit
+        let calculateToFah=(inp-273.15)*(9/5)+32;
+        fahResult.textContent=`Fahrenheit=${calculateToFah} F`;
+        
+        //Kelvin --------->Celsius
+        let calculateToCel=inp-273.15;
+        let celResult=document.createElement("h3");
+        container.append(celResult);
+        kelResult.textContent=`Celsius=${calculateToCel} C`;
+    });
+
+});
+
+//===========================================================
+
+//3...Fahrenheit to Other temperature conversions
+
+fahBtn.addEventListener("click", ()=>{
+    fahBtn.style.backgroundColor="green";
+    fahBtn.style.color="white";
+    
+    kelBtn.style.backgroundColor="white";
+    kelBtn.style.color="black";
+
+    celBtn.style.backgroundColor="white";
+    celBtn.style.color="black";
+    
+    (document.getElementById("submitBtn")).addEventListener("click", ()=>{
+        let inp=Number(document.getElementById("inp").value);
+        //Fahrenheit --------> Kelvin
+        let calculateToKel=(inp-32)*(5/9)+273.15;
+        kelResult.textContent=`Kelvin=${calculateToKel} K`;
+        
+        //Fahrenheit --------->Celsius
+        let calculateToCel=(inp-32)*(5/9);
+        fahResult.textContent=`Celsius=${calculateToCel} C`;
+    });
+});
+     </script>
+</body>
+</html>

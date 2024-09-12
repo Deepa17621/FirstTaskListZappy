@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+    <!-- <link rel="stylesheet" href="../css/reverseString.css"> -->
+
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+}
+#container
+{
+    border: 1px solid white;
+    height: 85vh;
+    width: 98vw;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    border-spacing: 100px;
+}
+#child1{
+    outline: 0;
+    height: 75vh;
+    border-radius: 5px;
+    width: 25vw;
+    text-align: center;
+    box-shadow: 0 0 5px rgb(82, 78, 78);
+    border: 1px solid black;
+}
+
+#child2
+{
+    border: 0;
+    outline: 0;
+    height: 75vh;
+    border-radius: 5px;
+    width: 25vw;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 7px rgb(82, 78, 78);
+    
+}
+
+#submitbtn{
+    border: 1px solid rgb(2, 52, 45);
+    height: 40px;
+    width:auto;
+    padding: 10px;
+    border-radius: 5px;
+    color: green;
+    background-color: aliceblue;
+    font-size: medium;
+    margin-top: 10px;
+}
+
+#inp{
+    border: 1px solid rgb(22, 168, 37);
+    height: 40px;
+    width: 60%;
+    text-align: center;
+     margin-top: 50px;
+     border: 1px solid black;
+}
+
+#submitbtn:hover{
+    color: white;
+    background-color: rgb(26, 152, 64);
+}
+table{
+    color: white;
+    border-spacing: 20px;
+    text-align: center;
+    margin-left: 70px;
+    margin-top: 50px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+}
+header{
+    /* border-top: 1px solid green; */
+    border: 1px solid white;
+    height: 15vh;
+    text-align: center;  
+}
+header>h3{
+    margin-top: 30px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Reverse a String- gnirtS a esreveR</h3>
+       </header>
+       <hr>
+    <section id="container">
+        <div id="child1">
+            <h3 style="margin-top: 70px; color: green;"><i>Enter Your Input Here to Check the Reverse of String</i>
+            </h3>
+            <tr>
+                <td> 
+                  <p>
+                    <input type="text" name="" id="inp" placeholder="enter a word" autofocus> 
+                  </p>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <p>
+                     <button id="submitbtn">Submit
+                    </p>
+                    </button>
+                 </td>
+            </tr>
+           </table>
+        </div>
+
+        <div id="child2">
+          <h3 style="margin-top: 70px; color: green;"><i>Here is the output</i></h3> 
+          <br><br>
+        </div>
+
+    </section>
+    <script>
+      let container=document.getElementById("child2");
+
+
+let inp=document.getElementById("inp");
+let btn=document.getElementById("submitbtn");
+let br=document.createElement("br");
+btn.addEventListener("click",()=>
+{
+    let val=inp.value;
+    let enteredValue=document.createElement("h3");
+    enteredValue.textContent=`${val}`;
+    container.appendChild(enteredValue);
+    container.appendChild(br);
+    container.appendChild(br);
+    let output="";
+    for(let i=val.length;i>=0;i--)
+    {
+        output+=val.charAt(i);
+    }
+    let timeout=setTimeout(()=>{
+        let result=document.createElement("h3");
+        result.textContent=output;
+        container.appendChild(result);
+
+    },2000);
+})
+
+    </script>
+    <!-- <script src="../js/reverseString.js"></script> -->
+</body>
+</html>

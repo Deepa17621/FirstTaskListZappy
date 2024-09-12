@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+    <!-- <link rel="stylesheet" href="../css/fibonacciSeries.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+#container
+{
+    border: 1px solid black;
+    width: 99vw;
+    height: 99vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+#getInput
+{
+    border: 1px solid black;
+    min-width:30%;
+    min-height:30%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#btn{
+    width: 100%;
+    background-color: rgb(23, 18, 103);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid rgb(103, 28, 169);
+    padding: 5px;
+    border-radius: 3px;
+    font-size: medium;
+}
+#result
+{
+    border: 1px solid black;
+    min-height: 30%;
+    min-width: 50%;
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <!-- Outer container -->
+    <div id="container">
+        <!-- Input Container -->
+        <div id="getInput">
+            <!-- Form -->
+            <form action="" id="form">
+                <input type="number" name="" id="inp" placeholder="Enter a End Range" autofocus>
+                <p></p>
+                <br>
+                <button type="submit" id="btn">Submit</button>
+            </form>
+
+        </div>
+
+        <!-- Result Container -->
+        <div id="result">
+            <h4 style="text-align: center;">Fibonacci Series</h4>
+            <p id="pp"></p>
+        </div>
+    </div>
+    <!-- <script src="../js/fibonacciSeries.js"></script> -->
+
+    <script>
+        let resultContainer=document.getElementById("result");
+
+let inp=document.getElementById("inp");
+
+let btn=document.getElementById("btn");
+
+let form=document.getElementById("form");
+
+form.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    if(inp.value=="")
+    {
+        inp.style.borderColor="red";
+        inp.nextElementSibling.textContent="Required....,"
+        inp.nextElementSibling.style.color="red";
+    }
+    else{
+        resultContainer.style.display="block";
+        let a=0;
+        let b=1;
+        let res=document.getElementById("pp");
+        res.textContent =`${a},${b}, `;
+        console.log(res)
+        let c=a+b;
+        let d=Number(inp.value);
+       for(let i=2;i<=d;i++)
+        {
+            res.textContent+=`${c}, `;
+            a=b;
+            b=c;
+            c=a+b;
+        }
+    }
+});
+    </script>
+</body>
+</html>

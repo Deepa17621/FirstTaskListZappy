@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Bank Account</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #frontPage
+        {
+            height: 100vh;
+        }
+        #loginContainer
+        {
+            min-height: 40%;
+            min-width: 30%;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-top: 10%;
+        }
+        .loginSubmitBtn
+        {
+            background-color: teal;
+            width: 167px;
+            border-radius: 3px;
+            border-color: teal;
+            color: aliceblue;
+        }
+        .parent
+        {
+            height: 99.5vh;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+        }
+        .choiceBtn{
+            text-decoration: none;
+            border: 1px solid aquamarine;
+            height: 5%;
+            width:18%;
+            text-align: center;
+            border-radius:4px;
+            padding-top: 5px;
+            background-color: aquamarine;
+            font-size: medium;
+            color: black;
+
+        }
+        #secondPage
+        {
+            justify-content: center;
+        }
+        header{
+            height: 10%;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+        }
+        .choiceBtn:hover
+        {
+            background-color: rgb(12, 177, 122);
+        }
+        .formm
+        {
+            margin-top: 13%;
+        }
+        #secondPage, #deposit, #CheckBalance, #withdrawAmount
+        {
+            display: none;
+        }
+        #depoCancelBtn
+        {
+            border: 1px solid teal ;
+            background-color: teal;
+            width: 167px;
+            border-radius: 3px;
+            text-decoration: none;
+            color: aliceblue;
+            display: inline-block;
+            text-align: center;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="frontPage" class="parent">
+        <header>
+            <h3>Login To Acess Account</h3>
+        </header>
+        <section id="loginContainer">
+            <form action="" id="loginForm">
+                <input type="text" name="" id="firstName" placeholder="Enter FirstName">
+
+                <span></span>
+                <br><br>
+                <input type="password" name="" id="loginPass" placeholder="Enter Password">
+                <span></span>
+                <br><br>
+                <input type="submit" name="" class="loginSubmitBtn">
+                <br><br>
+                <span id="error1"></span><br>
+                <a href="./bankAccManagement.html" id="xxx">Create New Account Here</a>
+            </form>
+        </section>
+    </div>
+
+    <!-- Second Page-Choice Container -->
+    <div id="secondPage" class="parent">
+        <a href="#" id="idForCheckBal" class="choiceBtn">Check Balance</a>
+        <br>
+        <a href="#deposit" id="idForDeposit" class="choiceBtn">Deposit Amount</a>
+        <br>
+        <a href="#withdrawAmount" id="idForWithdraw" class="choiceBtn">Withdraw Amount</a>
+    </div>
+    
+
+    <!-- Deposit Container -->
+    <div id="deposit" class="parent">
+        <header>
+            <h3>Deposit Amount To Your Account</h3>
+        </header>
+        <section class="formm">
+            <form action="" id="depositForm">
+                <input type="number" placeholder="Enter Amount To Deposit" id="depositAmount">
+                <span></span>
+                <br><br>
+                <input type="submit" name="Deposit" value="Deposit" class="loginSubmitBtn">
+                <a href="#secondPage" id="depoCancelBtn" class="loginSubmitBtn">Cancel</a>
+            </form>
+        </section>
+        <br><br>
+        
+            <span id="error2"></span><br><br>
+        <a href="#secondPage" class="btHBtn">backToHomePage</a>
+
+    </div>
+    
+    <!-- WithDraw Amount Container -->
+    <div id="withdrawAmount" class="parent">
+        <header>
+            <h3>Withdraw Amount From Your Account</h3>
+        </header>
+        <section class="formm"  id="withdrawForm">
+            <form action="">
+                <input type="number" placeholder="Enter Amount To Withdraw" id="amountInp">
+                <span></span>
+                <br><br>
+                <input type="submit" name="" class="loginSubmitBtn" value="Withdraw">
+                <a href="#secondPage" id="CancelBtn" class="loginSubmitBtn">Cancel</a>
+                <br><br>
+                <span id="error3"></span>
+            </form>
+
+        </section>
+            <br><br>
+        <a href="#secondPage" class="btHBtn">backToHomePage</a>
+    </div>
+    <script src="./bankAccess.js"></script>
+</body>
+</html>

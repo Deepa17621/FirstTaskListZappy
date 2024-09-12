@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeNumber</title>
+    <!-- <link rel="stylesheet" href="../css/primeNumber.css"> -->
+     <style>
+        *{
+    margin: 0;
+    padding: 0;
+    }
+    header
+    {
+        border: 1px solid rgb(222, 212, 212);
+        height: 10vh;
+        text-align: center;
+        background-color: darkgrey;
+        color: aliceblue;
+
+    }
+    header>h1{
+        margin-top: 5px;
+    }
+    #mainPage
+    {
+        height: 75vh;
+        display: flex;
+    }
+    #getInput
+    {
+        border-right: 1px solid rgb(15, 14, 14);
+        height: 75vh;
+        text-align: center;
+        width: 50vw;
+    }
+    #content{
+        margin-top: 150px;
+        color: blue;
+    }
+    #btn{
+        border: 1px solid black;
+        border-radius: 5px;
+        color: white;
+        background-color: blueviolet;
+        font-family: serif;
+        height: 40px;
+        width: 150px;
+    }
+
+    #displayOutput
+    {
+        border-left: 1px solid rgb(13, 13, 13);
+        height: 75vh;
+        text-align: center;
+        width: 50vw;
+    }
+    footer{
+        border: 1px solid rgb(207, 201, 201);
+        height: 15vh;
+        text-align: center;
+        color: aliceblue;
+        background-color: darkgray;
+    }
+    footer>h3{
+        margin-top: 19px;
+    }
+    #displayOutput>h3{
+        margin-top: 150px;
+        border-radius: 4px;
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+        width: 250px;
+        height: 40px;
+        margin-left: 200px;
+        padding-top: 7px;
+        display: none;
+    }
+     </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <h1>PrimeNumber</h1>
+    </header>
+
+    <!--Section-->
+    <section id="mainPage">
+
+        <!--Get input page-->
+        <div id="getInput">
+            <h4>Input Page</h4>
+            <div id="content">
+                <label for="inp">Enter A Number:  </label>
+            <input type="number" id="inp">
+            <br><br>
+            <button id="btn">Click Here To Check</button>
+            </div>
+        </div>
+
+        <!--Display Output Page-->
+        <div id="displayOutput">
+            <h4>Output Page</h4>
+            <h3 id="result"></h3>
+        </div>
+
+    </section>
+
+        
+    <!--Footer-->
+    <footer>
+        <h3><b><i>Primer Numbers are Natural Numbers that are divisible by only 1 and the number itself.</i></b></h3>
+    </footer>
+    <!-- <script src="../js/primeNumber.js"></script> -->
+     <script>
+        
+    let resultH3=document.getElementById("result");
+
+    let btn=document.getElementById("btn");
+
+    let val=document.getElementById("inp");
+
+    btn.addEventListener("click",()=>
+    {
+        let temp=val.value;
+        for(let i=2;i<temp;i++)
+        {
+            if(temp%i==0)
+            {
+                resultH3.textContent=`Given Number ${val.value} is Not a PrimeNumber`;
+                resultH3.style.display="block";
+                return;
+            }
+        }
+        resultH3.textContent=`Given Number ${val.value} is PrimeNumber`;
+        resultH3.style.display="block";
+    });
+     </script>
+</body>
+</html>

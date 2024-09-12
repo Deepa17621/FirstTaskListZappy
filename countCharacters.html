@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Characters In String</title>
+    <!-- <link rel="stylesheet" href="../css/countCharacters.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+#container
+{
+    border:0;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.card
+{
+    border:0;
+    outline: 0;
+    box-shadow: 0 0 15px ;
+    height: 85vh;
+    width: 30vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 30px;
+}
+#tbl
+{
+   display: none;
+   /* border: 1px solid black; */
+   box-shadow:  0 0 10px;
+   /* width: 50%; */
+}
+#btn
+{
+    border: 1px solid black;
+    height:25px;
+    width: 100px;
+    background-color: rgb(13, 175, 135);
+    font-size: medium;
+    color: white;
+}
+#btn:hover{
+    background-color: white;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center; padding-top: 10px;"><i>Count Each Characters Present in Given String</i></h2>
+    <hr>
+    <hr><br>
+    <section id="container">
+        <div class="card">
+           <table>
+            <tr>
+                <td><label for="inp">Enter A String</label></td>
+                <td><input type="text" name="" id="inp" autofocus></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input  id="btn" type="submit" onclick="count()">
+                </td>
+            </tr>
+           </table>
+        </div>
+
+        <div class="card">
+            <table id="tbl">
+                <tr>
+                    <td>Characters</td>
+                    <td>Count</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </section>
+    <!-- <script src="../js/countCharacters.js"></script> -->
+<script>
+    let inp=document.getElementById("inp");
+let tbl=document.getElementById("tbl");
+
+function count()
+{
+    let val=inp.value;
+
+    let lowerCase=val.toLowerCase();
+
+    // console.log(lowerCase);
+
+    let arr=Array.from(lowerCase);
+
+    // console.log(output);
+
+    let obj=new Object();
+
+    for(let i=0;i<arr.length;i++)
+    {
+        if(arr[i]!='0')
+        {
+            var countOfCharacters=1;
+            for (let j = i+1; j< arr.length; j++) 
+            {
+                if(arr[i]==arr[j])
+                {
+                    countOfCharacters+=1;
+                    arr[j]='0';
+                }
+            }
+            obj[`${lowerCase[i]}`]=countOfCharacters;
+        }
+    }
+    console.log(obj);
+    for (const key in obj) 
+    {
+        let tr=document.createElement("tr");
+        tbl.appendChild(tr);
+        let td1=document.createElement("td");
+        let td2=document.createElement("td");
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        td1.style.textAlign="center";
+        td2.style.fontSize="medium";
+        td2.style.textAlign="center";
+        td1.style.fontSize="medium";
+        td1.textContent=key;
+        td2.textContent=obj[key];
+    }
+    tbl.style.display="block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Visibility</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+        <toggle-tag></toggle-tag>
+        <!-- <script src="../js/toggleVisibility.js"></script> -->
+</body>
+
+<script>
+    class toggleVisibility extends HTMLElement
+{
+    constructor()
+    {
+        super();
+    }
+    
+    connectedCallback()
+    {
+        //ShadowRoot Starting
+        const shadow=this.attachShadow({mode: 'open'});
+
+        //Creating Html Elements
+
+        //---------Header Part Start-----
+        const header=document.createElement("header");
+        const h2=document.createElement("h2");
+        h2.textContent="Toggle Visibility";
+        h2.style.cssText=
+        `
+        color:white;
+        textAlign:center;
+        `;
+        header.appendChild(h2);
+
+        header.style.cssText=
+        `
+            border:1px solid black;
+            height:10vh;
+            display:flex;
+             align-items: center;
+            justify-content: center;
+            flex-direction:row;
+            background-color:red;
+        `
+        shadow.appendChild(header);
+        //-----Header part End------------
+
+        //-----------Container start------------
+
+        const divContainer=document.createElement("div");
+        divContainer.style.cssText=
+        `
+            border:1px solid black;
+            height:87vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-evenly;
+            align-items:center;
+
+        `;
+        //------button start------
+        const btn=document.createElement("button");
+        btn.style.cssText=`
+        border:1px solid grey;
+        border-radius:4px;
+        height:50px;
+        width:250px;
+        background-color:grey;
+        color:white;
+        font-size:medium;
+        text-align:center;
+        `
+        btn.textContent="Click Here TO Display Tajmahal"
+        divContainer.appendChild(btn);
+        shadow.appendChild(divContainer);
+        //-----button End-------------
+
+        //----Hidden Content's Container Starts----
+        const divForHidden=document.createElement("div");
+        divForHidden.style.cssText=
+        `border: 1px solid grey;
+        height:70%;
+        width:40%;
+        display:none;
+        flex-direction:row;
+        align-items center;
+        justify-content:center;
+        background-image:url("https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHg3MDczMTMtaW1hZ2Utcm01MDgtbDBqY2N6ZWcucG5n.png");
+        background-size:contain;
+        background-repeat:no-repeat;
+        `;
+        //Append Child to Outer Container
+        divContainer.appendChild(divForHidden);
+        let flag=false;
+        //Event For Button Click;
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault();
+            flag= !flag;
+            divForHidden.style.display=flag?"flex":"none";
+            divContainer.style.backgroundColor=flag?"green":"white";
+            btn.textContent=!flag?"Click here to Display Tajmahal":"Click here to hide Tajmahal";
+        });
+        let fl=false;
+        divForHidden.addEventListener("click",()=>{
+            fl=!fl;
+            divForHidden.style.display=flag?"none":"flex";
+        });
+    }
+}
+customElements.define("toggle-tag", toggleVisibility);
+</script>
+
+</html>
